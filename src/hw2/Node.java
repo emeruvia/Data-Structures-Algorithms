@@ -1,61 +1,62 @@
 package hw2;
 
-public class Node {
+/**
+ * Object class for the nodes
+ */
+class Node {
 	
+	//Node values
 	private Node leftChild;
 	private Node rightChild;
-	private Node root;
 	private String word;
 	private int height;
+	private StringBuilder lineNumber;
 	
-	public Node(Node root, String word) {
-		this.root = root;
+	//Object constructor
+	Node(String word) {
 		this.word = word;
+		lineNumber = new StringBuilder();
 	}
 	
-	public void setLeftChild(Node leftChild) {
+	void setLeftChild(Node leftChild) {
 		this.leftChild = leftChild;
 	}
 	
-	public Node getLeftChild() {
+	Node getLeftChild() {
 		return leftChild;
 	}
 	
-	public Node getRightChild() {
+	Node getRightChild() {
 		return rightChild;
 	}
 	
-	public void setRightChild(Node rightChild) {
+	void setRightChild(Node rightChild) {
 		this.rightChild = rightChild;
 	}
 	
-	public Node getRoot() {
-		return root;
-	}
-	
-	public void setRoot(Node root) {
-		this.root = root;
-	}
-	
-	public String getWord() {
+	String getWord() {
 		return word;
 	}
 	
-	public void setWord(String word) {
-		this.word = word;
-	}
-	
-	public int getHeight() {
+	int getHeight() {
 		return height;
 	}
 	
-	public void setHeight(int height) {
+	void setHeight(int height) {
 		this.height = height;
 	}
 	
+	void addLineNumber(int lineNum) {
+		this.lineNumber.append(lineNum);
+	}
+	
+	void appendLineNumber(int lineNum) {
+		this.lineNumber.append(", ").append(lineNum);
+	}
+	
+	//Method returns the string with the proper Node values.
 	@Override
 	public String toString() {
-		return word + " height " + height + " parent " + (root == null ?
-				"NULL" : root.word) + " | ";
+		return String.format("%-10s%s", word, lineNumber);
 	}
 }
