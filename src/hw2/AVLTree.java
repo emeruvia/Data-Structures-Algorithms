@@ -5,7 +5,7 @@ public class AVLTree {
 	private Node root;
 	
 	public void insert(String word) {
-		insert(root, word);
+		root = insert(root, word);
 	}
 	
 	public Node insert(Node p, String word) {
@@ -36,6 +36,25 @@ public class AVLTree {
 		}
 		p.setHeight(max(height(p.getLeftChild()), height(p.getRightChild()) + 1));
 		return p;
+	}
+	
+	public void print() {
+		if (isEmpty())
+			System.out.println("Empty tree");
+		else
+			printTree(root);
+	}
+	
+	private void printTree(Node p) {
+		if (p != null) {
+			printTree(p.getLeftChild());
+			System.out.println(p.getWord());
+			printTree(p.getRightChild());
+		}
+	}
+	
+	public boolean isEmpty() {
+		return root == null;
 	}
 	
 	private int height(Node p) {

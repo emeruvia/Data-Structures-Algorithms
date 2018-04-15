@@ -17,11 +17,11 @@ public class HW2 {
 
     int i = 0;
     for (String s : wordList) {
-			 
-      System.out.println(s + "\t" + lineList.get(i));
+			 avlTree.insert(s);
+//      System.out.println(s + "\t" + lineList.get(i));
       i++;
     }
-    
+    avlTree.print();
   }
   
   /**
