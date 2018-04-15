@@ -17,11 +17,11 @@ public class HW2 {
 
     int i = 0;
     for (String s : wordList) {
+			 
       System.out.println(s + "\t" + lineList.get(i));
       i++;
     }
     
-//    avlTree.printTree();
   }
   
   /**
@@ -37,7 +37,7 @@ public class HW2 {
       System.exit(1);
     }
     String line;  //stores the string of text from the .txt file
-    String parsedWord;  //Stores the value of the parsed word
+    String parsedWord;  //Stores the word of the parsed word
     int wordLength; //Stores the length of the word
     int lineNum = 1;  //Stores the number of line
     try {
