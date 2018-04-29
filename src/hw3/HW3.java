@@ -8,14 +8,16 @@ public class HW3 {
 	
 	private static Scanner input;
 	private static ArrayList<String> intersection;
+	private static ArrayList<IntersectionNode> nodeList;
 	
 	public static void main(String[] args) {
 		readText("mapcampus.txt");
-		System.out.println("Before Sorting");
-		System.out.println(intersection);
-		System.out.println("After Sorting");
 		new QuickSort(intersection);
 		System.out.println(intersection);
+		for (IntersectionNode node : nodeList) {
+			System.out.println(node.toString());
+		}
+
 	}
 	
 	private static void readText(String path) {
@@ -27,12 +29,15 @@ public class HW3 {
 			System.exit(1);
 		}
 		intersection = new ArrayList<>();
+		nodeList = new ArrayList<>();
+		IntersectionNode node;
 		String word;
 		String line;
 		boolean duplicate = false;
 		try {
 			while ((line = input.nextLine()) != null) {
 				StringTokenizer st = new StringTokenizer(line);
+				StringTokenizer st2 = new StringTokenizer(line);
 				while (st.hasMoreTokens()) {
 					word = st.nextToken();
 					for (String s : intersection) {
@@ -47,10 +52,21 @@ public class HW3 {
 					duplicate = false;
 					break;
 				}
+				while (st.hasMoreTokens()) {
+					node = new IntersectionNode(st2.nextToken());
+					node.setStreet(st2.nextToken());
+					node.setEdge(st2.nextToken());
+					node.setDir(st2.nextToken());
+					node.setDist(st2.nextToken());
+					node.setSpeed(Integer.valueOf(st2.nextToken()));
+					nodeList.add(node);
+					break;
+				}
 			}
 		} catch (NoSuchElementException e) {
 			//Do nothing
 		}
+		
 		input.close();
 	}
 }
