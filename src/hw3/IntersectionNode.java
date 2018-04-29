@@ -4,13 +4,17 @@ class IntersectionNode {
 	
 	private String vertex;
 	private String street;  //name of the street
-	private String edge;
+	private IntersectionNode edge;
 	private String dir;     //direction
 	private String dist;    //distance
 	private int speed;
 	
 	IntersectionNode(String vertex) {
 		this.vertex = vertex;
+	}
+	
+	String getVertex() {
+		return vertex;
 	}
 	
 	String getStreet() {
@@ -21,11 +25,11 @@ class IntersectionNode {
 		this.street = street;
 	}
 	
-	String getEdge() {
+	IntersectionNode getEdge() {
 		return edge;
 	}
 	
-	void setEdge(String edge) {
+	void setEdge(IntersectionNode edge) {
 		this.edge = edge;
 	}
 	
@@ -55,7 +59,7 @@ class IntersectionNode {
 	
 	@Override
 	public String toString() {
-		return String.format("%-25s%-20s%-25s%-15s%-10s%-10d", vertex, street,
+		return String.format("%-25s%-20s%-25s%-15s%-10s%d", vertex, street,
 				edge, dir, dist, speed);
 	}
 }
