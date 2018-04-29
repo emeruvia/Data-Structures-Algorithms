@@ -29,11 +29,22 @@ public class HW3 {
 		intersection = new ArrayList<>();
 		String word;
 		String line;
+		boolean duplicate = false;
 		try {
 			while ((line = input.nextLine()) != null) {
 				StringTokenizer st = new StringTokenizer(line);
 				while (st.hasMoreTokens()) {
-					intersection.add(st.nextToken());
+					word = st.nextToken();
+					for (String s : intersection) {
+						if (s.equals(word)) {
+							duplicate = true;
+							break;
+						}
+					}
+					if (!duplicate) {
+						intersection.add(word);
+					}
+					duplicate = false;
 					break;
 				}
 			}

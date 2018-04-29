@@ -6,10 +6,6 @@ class QuickSort {
 	
 	private static ArrayList<String> list = new ArrayList<>();
 	
-	QuickSort() {
-		//Empty constructor
-	}
-	
 	QuickSort(ArrayList<String> list) {
 		this.list = list;
 		quickSort(0, list.size() - 1);
