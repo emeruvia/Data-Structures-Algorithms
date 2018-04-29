@@ -2,16 +2,20 @@ package hw3;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class HW3 {
-
+	
 	private static Scanner input;
+	private static ArrayList<String> intersection;
 	
 	public static void main(String[] args) {
 		readText("mapcampus.txt");
+		System.out.println("Before Sorting");
+		System.out.println(intersection);
+		System.out.println("After Sorting");
+		new QuickSort(intersection);
+		System.out.println(intersection);
 	}
 	
 	private static void readText(String path) {
@@ -22,17 +26,15 @@ public class HW3 {
 			System.out.println("Error opening file...");
 			System.exit(1);
 		}
+		intersection = new ArrayList<>();
 		String word;
-		String line;  //stores the string of text from the .txt file
+		String line;
 		try {
-			//loops while there is still a new line in the .txt file
 			while ((line = input.nextLine()) != null) {
-				//separates the lines by words
 				StringTokenizer st = new StringTokenizer(line);
-				//loops while there are still more words in the line
 				while (st.hasMoreTokens()) {
-					word = st.nextToken();
-					System.out.println(word);
+					intersection.add(st.nextToken());
+					break;
 				}
 			}
 		} catch (NoSuchElementException e) {
